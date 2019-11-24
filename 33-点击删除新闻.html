@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+    ul {
+        width: 600px;
+    }
+        ul li {
+            list-style: none;
+            padding: 10px;
+            border-bottom: 1px dashed #0094af;
+        }
+        b {
+            margin-right: 45px;
+        }
+        i {
+            font-style: normal;
+            margin: 0 10px;
+            float: right;
+        }
+        span {
+            position: relative;
+            top: -6px;
+            float: right;
+            padding: 5px;
+            border: 1px solid #0049af;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <!-- <Li>
+            <b>你很帅呀你很帅呀</b>
+            <span>删除</span>
+            <i>2019-10-28</i>
+        </Li> -->
+    </ul>
+</body>
+<script>
+    var news = [
+        {"content":"单兵天眼!国产手抛无人机亮相天山军演","date":"2019-10-28"},
+        {"content":"习近平夫妇在上海会见法国总统马克龙夫妇","date":"2019-10-29"},
+        {"content":"内蒙古一女生为学历验真奔波八年终获结果","date":"2019-10-30"},
+        {"content":"波音载人飞船发射测试总体成功 只一个降落伞未开","date":"2019-10-31"},
+    ]
+    let ul = document.querySelector('ul');
+    let str = '';
+    news.forEach(e => {
+        str += `<Li>
+            <b>${e.content}</b>
+            <span>删除</span>
+            <i>${e.date}</i>
+        </Li>`
+    })
+    ul.innerHTML = str;
+    ul.onclick = function(e) {
+        if (e.target.nodeName == 'SPAN') {
+            ul.removeChild(e.target.parentNode);
+        }
+    }
+</script>
+</html>

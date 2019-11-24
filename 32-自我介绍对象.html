@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    /* ====== 构造函数 */
+    function Person(name, age, food) {
+      this.name = name;
+      this.age = age;
+      this.food = food;
+      this.introduce = function() {
+        console.log("你好，我叫" + this.name + "，今年" + this.age + "岁啦");
+        return this;
+      };
+      this.eat = function() {
+        console.log("我最喜欢吃" + this.food + "");
+        return this;
+      };
+    }
+    /* ====== 测试一下 */
+    var ming = new Person("小明", 18, "榴莲");
+    console.log(ming.name);
+    console.log(ming.age);
+    console.log(ming.food);
+    console.log(ming.introduce());
+    console.log(ming.introduce().eat());
+  </script>
+</html>

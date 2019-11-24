@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <h2>标题1</h2>
+        <p class="son">段落1</p>
+        <p class="son">段落2</p>
+        <p class="son">段落3</p>
+    </div>
+</body>
+<script>
+    let box = document.querySelector('.box');
+    let p = document.querySelectorAll('p');
+    box.onclick = function(e) {
+        // 先让所有p标签初始化背景
+        [].forEach.call(p,e => {
+            e.style.backgroundColor = '';
+        }) 
+        // 将选中的p标签背景变红 
+        if (e.target.nodeName == 'P') {
+            e.target.style.backgroundColor = '#f00';
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .all {
+        width: 100px;
+        margin: 50px auto;
+      }
+      .box {
+        padding: 5px 15px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        text-align: center;
+      }
+      i {
+        font-style: normal;
+      }
+      button {
+        border-radius: 5px;
+        background: none;
+        padding: 5px;
+        margin-top: 10px;
+      }
+      button:nth-child(2) {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all">
+      <div class="box">
+        <span class="min">10</span>
+        <i>:</i>
+        <span class="sec">00</span>
+      </div>
+      <button>继续</button>
+      <button>暂停</button>
+    </div>
+  </body>
+</html>
+<script>
+  let min = document.querySelector(".min");
+  let sec = document.querySelector(".sec");
+  let btn1 = document.querySelectorAll("button")[0];
+  let btn2 = document.querySelectorAll("button")[1];
+  var arr = [];
+  var timer = setInterval(function() {
+    let con1 = min.innerText;
+    let con2 = sec.innerText;
+    if (con1 <= 0 && con2 <= 0) {
+      clearInterval(timer);
+      min.innerText = "00";
+      sec.innerText = "00";
+      return;
+    }
+    if (con2 <= 0 && con1 != 0) {
+      con2 = 60;
+      con1--;
+    }
+    con2--;
+    con1 = String(con1).length < 2 ? "0" + con1 : con1;
+    con2 = String(con2).length < 2 ? "0" + con2 : con2;
+    min.innerText = con1;
+    sec.innerText = con2;
+    arr[0] = con1;
+    arr[1] = con2;
+  }, 1000);
+  // 暂停存储数据
+  btn2.onclick = function() {
+    clearInterval(timer);
+    min.innerText = arr[0];
+    sec.innerText = arr[1];
+  };
+  // 继续、加载数据
+  btn1.onclick = function() {
+    timer = setInterval(function() {
+      let con1 = min.innerText;
+      let con2 = sec.innerText;
+      if (con1 <= 0 && con2 <= 0) {
+        clearInterval(timer);
+        min.innerText = "00";
+        sec.innerText = "00";
+        return;
+      }
+      if (con2 <= 0 && con1 != 0) {
+        con2 = 60;
+        con1--;
+      }
+      con2--;
+      con1 = String(con1).length < 2 ? "0" + con1 : con1;
+      con2 = String(con2).length < 2 ? "0" + con2 : con2;
+      min.innerText = con1;
+      sec.innerText = con2;
+      arr[0] = con1;
+      arr[1] = con2;
+    }, 1000);
+  };
+</script>
